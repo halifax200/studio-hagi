@@ -5,64 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio Hagi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:ital,wght@1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --chrome-plate: linear-gradient(145deg, #ffffff, #cbd5e1);
-            --steel: #475569;
-            --border-silver: rgba(148, 163, 184, 0.4);
+            --chrome-bg: #cbd5e1; /* Light Metallic Base */
+            --chrome-plate: linear-gradient(145deg, #f8fafc, #94a3b8);
+            --steel-dark: #475569;
+            --steel-light: #f1f5f9;
+            --border-silver: rgba(0, 0, 0, 0.1);
+            --button-grey: #64748b;
         }
 
-        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #d1d5db; }
-        .wrapper { max-width: 500px; margin: 0 auto; background: #fff; min-height: 100vh; box-shadow: 0 0 50px rgba(0,0,0,0.1); overflow-x: hidden; }
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: var(--chrome-bg); color: var(--steel-dark); }
+        .wrapper { max-width: 500px; margin: 0 auto; background: var(--steel-light); min-height: 100vh; box-shadow: 0 0 50px rgba(0,0,0,0.2); overflow-x: hidden; }
 
-        header { display: flex; align-items: center; justify-content: space-between; padding: 40px 20px; border-bottom: 1px solid var(--border-silver); }
-        .logo-box { width: 90px; height: 90px; border: 1px solid var(--border-silver); border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        /* HEADER */
+        header { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; border-bottom: 1px solid #94a3b8; background: #fff; }
+        .logo-box { width: 100px; height: 100px; border: 1px solid #cbd5e1; border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #fff; }
         .logo-box img { width: 100%; height: 100%; object-fit: cover; }
-        .branding-right h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 0; text-transform: uppercase; font-style: italic; letter-spacing: -1px; line-height: 0.9; }
 
-        .dashboard { display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px; padding: 25px; }
-        .dash-card { border: 1px solid var(--border-silver); border-radius: 10px; padding: 18px 15px; position: relative; background: #fff; }
-        .dash-card label { position: absolute; top: -10px; left: 12px; background: #fff; padding: 0 8px; font-size: 0.6rem; font-weight: 900; text-transform: uppercase; color: var(--steel); }
-        .dash-line { font-size: 0.75rem; margin-bottom: 6px; font-weight: 600; }
+        /* DASHBOARD */
+        .dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 25px; }
+        .dash-card { border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px 15px; position: relative; background: rgba(255,255,255,0.8); }
+        .dash-card label { position: absolute; top: -10px; left: 12px; background: #fff; padding: 0 8px; font-size: 0.6rem; font-weight: 900; text-transform: uppercase; color: var(--button-grey); }
+        .dash-line { font-size: 0.75rem; margin-bottom: 4px; font-weight: 600; line-height: 1.4; }
 
+        /* HEADLINES */
         .policy-section, .services-area { padding: 20px 25px; box-sizing: border-box; }
         .curved-headline { 
             width: 100%; box-sizing: border-box; background: var(--chrome-plate); 
-            border: 1px solid var(--border-silver); padding: 18px 25px; border-radius: 50px; 
+            border: 1px solid #94a3b8; padding: 18px 25px; border-radius: 50px; 
             display: flex; align-items: center; justify-content: center; gap: 15px; 
-            margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .curved-headline h2 { font-family: 'Playfair Display', serif; font-size: 0.95rem; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; }
+        .curved-headline h2 { font-size: 0.9rem; margin: 0; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; color: var(--steel-dark); }
         
-        .booking-desc { text-align: center; font-size: 0.85rem; color: var(--steel); margin-bottom: 30px; line-height: 1.5; padding: 0 10px; }
+        .booking-desc { text-align: center; font-size: 0.85rem; color: var(--button-grey); margin-bottom: 30px; line-height: 1.6; padding: 0 10px; font-weight: 500; }
 
         .policy-toggle-btn { cursor: pointer; }
         .policy-toggle-btn.active i { transform: rotate(180deg); }
 
+        /* GREY POLICY CONTENT */
         .policy-content-wrapper { max-height: 0; overflow: hidden; transition: 0.5s ease; }
         .policy-content-wrapper.open { max-height: 1500px; padding-top: 10px; }
         .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center; }
-        .icon-circle { width: 48px; height: 48px; border: 1px solid var(--border-silver); border-radius: 50%; margin: 0 auto 5px; display: flex; align-items: center; justify-content: center; background: #fff; font-size: 1.1rem; }
-        .policy-item.active .icon-circle { background: #000; color: #fff; }
-        .policy-item span { font-size: 0.55rem; font-weight: 800; text-transform: uppercase; display: block; }
+        .icon-circle { width: 48px; height: 48px; border: 1px solid #cbd5e1; border-radius: 50%; margin: 0 auto 5px; display: flex; align-items: center; justify-content: center; background: #fff; font-size: 1.1rem; }
+        .policy-item.active .icon-circle { background: var(--button-grey); color: #fff; }
+        .policy-item span { font-size: 0.55rem; font-weight: 800; text-transform: uppercase; display: block; color: var(--steel-dark); }
 
-        .policy-reveal { background: #1e293b; color: #fff; border-radius: 12px; max-height: 0; overflow: hidden; transition: 0.4s ease; }
-        .policy-reveal.active { max-height: 600px; padding: 20px; margin: 15px 0; border: 1px solid var(--steel); }
+        .policy-reveal { background: #e2e8f0; color: var(--steel-dark); border: 1px solid #cbd5e1; border-radius: 12px; max-height: 0; overflow: hidden; transition: 0.4s ease; }
+        .policy-reveal.active { max-height: 600px; padding: 20px; margin: 15px 0; }
         .policy-reveal ul { margin: 0; padding-left: 20px; font-size: 0.85rem; line-height: 1.6; }
 
-        .service-row { border-top: 1px solid var(--border-silver); padding: 25px 0; }
-        .service-top { display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+        /* SERVICES & GREY BUTTONS */
+        .service-row { border-top: 1px solid #cbd5e1; padding: 30px 0; }
+        .service-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; }
         .service-info { flex: 1; }
-        .service-info h3 { margin: 0; font-size: 1.2rem; font-weight: 700; }
-        .service-info .time-price { font-weight: 800; font-size: 0.85rem; margin: 5px 0; color: #000; }
-        .service-info .desc { margin: 5px 0 0; font-size: 0.8rem; color: var(--steel); line-height: 1.4; }
-        .btn-book-now { background: var(--chrome-plate); border: 1px solid var(--steel); padding: 10px 18px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; border-radius: 4px; cursor: pointer; flex-shrink: 0; }
-
-        .calendar-reveal { max-height: 0; overflow: hidden; transition: 0.6s ease; }
-        .service-row.active .calendar-reveal { max-height: 600px; padding-top: 20px; }
+        .service-info h3 { margin: 0; font-size: 1.1rem; font-weight: 800; text-transform: uppercase; color: #334155; }
+        .service-info .time-price { font-weight: 800; font-size: 0.8rem; margin: 8px 0; color: var(--button-grey); }
+        .service-info .desc { margin: 8px 0 0; font-size: 0.8rem; color: #64748b; line-height: 1.5; }
         
-        .zcal-frame { width: 100%; height: 500px; border: 1px solid var(--border-silver); border-radius: 12px; }
+        .btn-book-now { background: var(--button-grey); color: #fff; border: 1px solid #475569; padding: 12px 20px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; border-radius: 6px; cursor: pointer; flex-shrink: 0; transition: 0.3s; }
+        .btn-book-now:hover { background: #475569; }
+
+        /* GREY CALENDAR DROPDOWN */
+        .calendar-reveal { max-height: 0; overflow: hidden; transition: 0.6s ease; background: #f8fafc; border-radius: 12px; }
+        .service-row.active .calendar-reveal { max-height: 600px; padding: 15px; margin-top: 20px; border: 1px solid #cbd5e1; }
+        
+        .zcal-frame { width: 100%; height: 500px; border: none; border-radius: 8px; background: #fff; }
+        
+        footer { text-align: center; padding: 50px; font-size: 0.7rem; color: var(--button-grey); letter-spacing: 3px; font-weight: 800; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -70,23 +82,21 @@
     <div class="wrapper">
         <header>
             <div class="logo-box"><img src="images/studiohagi.jpg" alt="Logo"></div>
-            <div class="branding-right"><h1>Studio Hagi</h1></div>
         </header>
 
         <section class="dashboard">
             <div class="dash-card"><label>Contact</label>
                 <div class="dash-line"><i class="fas fa-envelope"></i> studiohagi@gmail.com</div>
-                <div class="dash-line"><i class="fab fa-instagram"></i> @STUDIOHAGI</div>
             </div>
             <div class="dash-card"><label>Hours</label>
-                <div class="dash-line">THU-FRI: 6PM - LATE</div>
-                <div class="dash-line">SATURDAY: 9AM - 4PM</div>
+                <div class="dash-line">Thu - Fri 6PM - 7:30 PM</div>
+                <div class="dash-line">Sat - 9am - 12pm</div>
             </div>
         </section>
 
         <section class="policy-section">
             <div class="curved-headline policy-toggle-btn" onclick="togglePolicyContent(this)">
-                <h2>Booking Policies & Treatment Rules</h2>
+                <h2>Booking Policies</h2>
                 <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
             </div>
             <div class="policy-content-wrapper" id="policyContent">
@@ -103,7 +113,7 @@
                     <div class="policy-item" onclick="togglePolicy(this, 'Respect & Conduct', ['Any inappropriate behavior will result in immediate termination of the service with no refund.'])"><div class="icon-circle"><i class="fas fa-shield-alt"></i></div><span>Respect</span></div>
                     <div class="policy-item" onclick="togglePolicy(this, 'Skin Consultation', ['Clients must arrive 10 minutes prior to appointment to complete intake forms.', 'Consultations are designed to identify concerns and develop a customized treatment plan.'])"><div class="icon-circle"><i class="fas fa-file-alt"></i></div><span>Consult</span></div>
                 </div>
-                <div id="pView" class="policy-reveal"><h4 id="pT" style="margin:20px 20px 10px; font-size:0.8rem; border-bottom:1px solid #444;"></h4><ul id="pB"></ul></div>
+                <div id="pView" class="policy-reveal"><h4 id="pT" style="margin:20px 20px 10px; font-size:0.8rem; border-bottom:1px solid #94a3b8;"></h4><ul id="pB"></ul></div>
             </div>
         </section>
 
@@ -154,7 +164,7 @@
             </div>
         </section>
 
-        <footer style="text-align:center; padding:40px; font-size:0.75rem; color:var(--steel); letter-spacing: 2px;">© 2026 STUDIO HAGI</footer>
+        <footer>© 2026 STUDIO HAGI</footer>
     </div>
 
     <script>
