@@ -3,209 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Hagi | Grey & Chrome Aesthetics</title>
+    <title>Studio Hagi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:ital,wght@1,800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --chrome-gradient: linear-gradient(145deg, #e2e8f0, #ffffff, #94a3b8);
-            --deep-grey: #1f2937;
-            --steel-grey: #4b5563;
-            --glass-chrome: rgba(255, 255, 255, 0.2);
+            --chrome-plate: linear-gradient(145deg, #ffffff, #cbd5e1);
+            --steel: #475569;
+            --border-silver: rgba(148, 163, 184, 0.4);
         }
 
-        /* BRUSHED GREY BACKGROUND WITH METALLIC ANIMATION */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            background: linear-gradient(135deg, #9ca3af 0%, #f3f4f6 50%, #6b7280 100%);
-            background-size: 300% 300%;
-            animation: chromeFlow 8s ease-in-out infinite;
-            color: var(--deep-grey);
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #d1d5db; }
+        .wrapper { max-width: 500px; margin: 0 auto; background: #fff; min-height: 100vh; box-shadow: 0 0 50px rgba(0,0,0,0.1); overflow-x: hidden; }
+
+        header { display: flex; align-items: center; justify-content: space-between; padding: 40px 20px; border-bottom: 1px solid var(--border-silver); }
+        .logo-box { width: 90px; height: 90px; border: 1px solid var(--border-silver); border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .logo-box img { width: 100%; height: 100%; object-fit: cover; }
+        .branding-right h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 0; text-transform: uppercase; font-style: italic; letter-spacing: -1px; line-height: 0.9; }
+
+        .dashboard { display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px; padding: 25px; }
+        .dash-card { border: 1px solid var(--border-silver); border-radius: 10px; padding: 18px 15px; position: relative; background: #fff; }
+        .dash-card label { position: absolute; top: -10px; left: 12px; background: #fff; padding: 0 8px; font-size: 0.6rem; font-weight: 900; text-transform: uppercase; color: var(--steel); }
+        .dash-line { font-size: 0.75rem; margin-bottom: 6px; font-weight: 600; }
+
+        .policy-section, .services-area { padding: 20px 25px; box-sizing: border-box; }
+        .curved-headline { 
+            width: 100%; box-sizing: border-box; background: var(--chrome-plate); 
+            border: 1px solid var(--border-silver); padding: 18px 25px; border-radius: 50px; 
+            display: flex; align-items: center; justify-content: center; gap: 15px; 
+            margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
+        .curved-headline h2 { font-family: 'Playfair Display', serif; font-size: 0.95rem; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .booking-desc { text-align: center; font-size: 0.85rem; color: var(--steel); margin-bottom: 30px; line-height: 1.5; padding: 0 10px; }
 
-        @keyframes chromeFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        .policy-toggle-btn { cursor: pointer; }
+        .policy-toggle-btn.active i { transform: rotate(180deg); }
 
-        .container {
-            width: 100%;
-            max-width: 450px;
-            padding: 40px 20px;
-            text-align: center;
-        }
+        .policy-content-wrapper { max-height: 0; overflow: hidden; transition: 0.5s ease; }
+        .policy-content-wrapper.open { max-height: 1500px; padding-top: 10px; }
+        .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center; }
+        .icon-circle { width: 48px; height: 48px; border: 1px solid var(--border-silver); border-radius: 50%; margin: 0 auto 5px; display: flex; align-items: center; justify-content: center; background: #fff; font-size: 1.1rem; }
+        .policy-item.active .icon-circle { background: #000; color: #fff; }
+        .policy-item span { font-size: 0.55rem; font-weight: 800; text-transform: uppercase; display: block; }
 
-        /* LOGO STYLING */
-        .logo {
-            width: 280px;
-            height: auto;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
-            border-radius: 12px;
-        }
+        .policy-reveal { background: #1e293b; color: #fff; border-radius: 12px; max-height: 0; overflow: hidden; transition: 0.4s ease; }
+        .policy-reveal.active { max-height: 600px; padding: 20px; margin: 15px 0; border: 1px solid var(--steel); }
+        .policy-reveal ul { margin: 0; padding-left: 20px; font-size: 0.85rem; line-height: 1.6; }
 
-        .section-label {
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            font-size: 0.7rem;
-            color: #374151;
-            margin: 40px 0 20px;
-            font-weight: 800;
-            display: block;
-        }
+        .service-row { border-top: 1px solid var(--border-silver); padding: 25px 0; }
+        .service-top { display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+        .service-info { flex: 1; }
+        .service-info h3 { margin: 0; font-size: 1.2rem; font-weight: 700; }
+        .service-info .time-price { font-weight: 800; font-size: 0.85rem; margin: 5px 0; color: #000; }
+        .service-info .desc { margin: 5px 0 0; font-size: 0.8rem; color: var(--steel); line-height: 1.4; }
+        .btn-book-now { background: var(--chrome-plate); border: 1px solid var(--steel); padding: 10px 18px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; border-radius: 4px; cursor: pointer; flex-shrink: 0; }
 
-        /* LIQUID CHROME CARDS */
-        .card {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 25px;
-            box-shadow: inset 0 0 15px rgba(255,255,255,0.5), 0 15px 35px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Shimmer Effect on Cards */
-        .card::after {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(45deg);
-            animation: shimmer 6s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-
-        /* CHART STYLING */
-        .day-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: 12px; color: #111827; }
-        .time-pill-wrap { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-start; }
-        .time-pill {
-            background: #cbd5e1;
-            border: 1px solid #94a3b8;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #1f2937;
-        }
-
-        /* SERVICES */
-        h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 5px; color: #000; }
-        .price { font-weight: 800; font-size: 1.2rem; color: #374151; display: block; margin-bottom: 15px; }
-        .desc { font-size: 0.9rem; color: #374151; line-height: 1.6; margin-bottom: 25px; }
-
-        /* REFLECTIVE CHROME BUTTON */
-        .btn-booking {
-            display: block;
-            background: var(--chrome-gradient);
-            color: #000;
-            text-decoration: none;
-            padding: 18px;
-            border-radius: 10px;
-            font-weight: 900;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 1px solid #94a3b8;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .btn-booking:hover {
-            filter: brightness(1.1);
-            transform: scale(1.03);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        /* SOCIALS */
-        .social-links { margin-top: 40px; display: flex; justify-content: center; gap: 40px; }
-        .social-links a { color: #111827; font-size: 2rem; transition: 0.3s; }
-        .social-links a:hover { color: #fff; transform: translateY(-5px); }
-
-        /* POLICY */
-        .policy-section {
-            font-size: 0.8rem;
-            color: #1f2937;
-            margin-top: 60px;
-            line-height: 1.8;
-            padding: 30px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-        }
-        .policy-bold { font-weight: 900; text-transform: uppercase; margin-bottom: 10px; display: block; color: #000; }
+        .calendar-reveal { max-height: 0; overflow: hidden; transition: 0.6s ease; }
+        .service-row.active .calendar-reveal { max-height: 600px; padding-top: 20px; }
+        
+        .zcal-frame { width: 100%; height: 500px; border: 1px solid var(--border-silver); border-radius: 12px; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <img src="images/studiohagi.jpg" alt="Studio Hagi" class="logo">
-        
-        <span class="section-label">Availability Chart</span>
-        <div class="card">
-            <div style="text-align: left; margin-bottom: 20px;">
-                <div class="day-name">Thursday & Friday</div>
-                <div class="time-pill-wrap">
-                    <span class="time-pill">6:00 PM - Start</span>
+    <div class="wrapper">
+        <header>
+            <div class="logo-box"><img src="images/studiohagi.jpg" alt="Logo"></div>
+            <div class="branding-right"><h1>Studio Hagi</h1></div>
+        </header>
+
+        <section class="dashboard">
+            <div class="dash-card"><label>Contact</label>
+                <div class="dash-line"><i class="fas fa-envelope"></i> studiohagi@gmail.com</div>
+                <div class="dash-line"><i class="fab fa-instagram"></i> @STUDIOHAGI</div>
+            </div>
+            <div class="dash-card"><label>Hours</label>
+                <div class="dash-line">THU-FRI: 6PM - LATE</div>
+                <div class="dash-line">SATURDAY: 9AM - 4PM</div>
+            </div>
+        </section>
+
+        <section class="policy-section">
+            <div class="curved-headline policy-toggle-btn" onclick="togglePolicyContent(this)">
+                <h2>Booking Policies & Treatment Rules</h2>
+                <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+            </div>
+            <div class="policy-content-wrapper" id="policyContent">
+                <div class="icon-grid">
+                    <div class="policy-item" onclick="togglePolicy(this, 'Appointment Booking', ['All appointments must be booked online.', 'A valid card is required to secure your appointment.', 'Please arrive on time—late arrivals will result in a $10 late fee!'])"><div class="icon-circle"><i class="fas fa-calendar-check"></i></div><span>Booking</span></div>
+                    <div class="policy-item" onclick="togglePolicy(this, 'Cancellations & No-Shows', ['A 24-hour notice is required to cancel or reschedule.', 'Cancellations within 24 hours will be charged 50% of the service price.'])"><div class="icon-circle"><i class="fas fa-calendar-times"></i></div><span>Cancel</span></div>
+                    <div class="policy-item" onclick="togglePolicy(this, 'No-Show Policy', ['No-shows will be charged 100% of the service price.', 'This charge will be credited toward your next appointment if rebooked within a specified time frame.'])"><div class="icon-circle"><i class="fas fa-user-slash"></i></div><span>No-Show</span></div>
+                    <div class="policy-item" onclick="togglePolicy(this, 'Late Policy', ['A 10-minute grace period is allowed.', 'After 10 minutes, your appointment will be canceled and treated as a no-show.'])"><div class="icon-circle"><i class="fas fa-clock"></i></div><span>Late</span></div>
+                    <div class="policy-item" onclick="togglePolicy(this, 'Deposits', ['Deposits are non-refundable and go toward your service.', 'Deposits may be transferred one time only with proper notice.'])"><div class="icon-circle"><i class="fas fa-credit-card"></i></div><span>Deposit</span></div>
+                    <div class="policy-item" onclick="togglePolicy(this, 'Recording & Content', ['Some services may be recorded for educational or promotional content.', 'Booking confirms your consent.', 'Notify us prior to your appointment if you prefer not to be recorded.'])"><div class="icon-circle"><i class="fas fa-video"></i></div><span>Content</span></div>
+                    <div class="policy-item" onclick="togglePolicy(this, 'Guest Policy', ['No extra guests are allowed unless previously approved.', 'Children are not permitted in the treatment room.'])"><div class="icon-circle"><i class="fas fa-users"></i></div><span>Guests</span></div>
+                    <div class="policy-item" onclick="togglePolicy(this, 'Health & Skin Disclosure', ['Please disclose any medical conditions or allergies prior to service.', 'You are required to fill out a skin consultation form before any services.'])"><div class="icon-circle"><i class="fas fa-heart"></i></div><span>Health</span></div>
+                    <div class="policy-item" onclick="togglePolicy(this, 'Refunds', ['No refunds on services rendered.', 'Product sales are final.'])"><div class="icon-circle"><i class="fas fa-undo"></i></div><span>Refunds</span></div>
+                    <div class="policy-item" onclick="togglePolicy(this, 'Respect & Conduct', ['Any inappropriate behavior will result in immediate termination of the service with no refund.'])"><div class="icon-circle"><i class="fas fa-shield-alt"></i></div><span>Respect</span></div>
+                    <div class="policy-item" onclick="togglePolicy(this, 'Skin Consultation', ['Clients must arrive 10 minutes prior to appointment to complete intake forms.', 'Consultations are designed to identify concerns and develop a customized treatment plan.'])"><div class="icon-circle"><i class="fas fa-file-alt"></i></div><span>Consult</span></div>
+                </div>
+                <div id="pView" class="policy-reveal"><h4 id="pT" style="margin:20px 20px 10px; font-size:0.8rem; border-bottom:1px solid #444;"></h4><ul id="pB"></ul></div>
+            </div>
+        </section>
+
+        <section class="services-area">
+            <div class="curved-headline"><h2>Book Appointment</h2></div>
+            <p class="booking-desc">Reserve a one-on-one facial appointment tailored to your skin’s unique needs. Select a time that works best for you.</p>
+            
+            <div class="service-row">
+                <div class="service-top">
+                    <div class="service-info">
+                        <h3>Express Facial</h3>
+                        <p class="time-price">Time: 25 minutes ($15)</p>
+                        <p class="desc">Perfect for clients who want glowing skin. This quick treatment includes a deep cleanse, gentle exfoliation, and customized finishing products to instantly refresh and hydrate the skin. Ideal for maintenance in between full facials or before an event.</p>
+                    </div>
+                    <button class="btn-book-now" onclick="toggleCalendar(this)">Book Now</button>
+                </div>
+                <div class="calendar-reveal">
+                    <iframe src="https://zcal.co/hagiaesthetics/30min?embed=1" class="zcal-frame" loading="lazy"></iframe>
                 </div>
             </div>
-            <div style="text-align: left;">
-                <div class="day-name">Saturday</div>
-                <div class="time-pill-wrap">
-                    <span class="time-pill">9:00 AM</span>
-                    <span class="time-pill">10:00 AM</span>
-                    <span class="time-pill">11:00 AM</span>
-                    <span class="time-pill">12:00 PM</span>
+
+            <div class="service-row">
+                <div class="service-top">
+                    <div class="service-info">
+                        <h3>Signature / Basic Facial</h3>
+                        <p class="time-price">Time: 60 minutes ($30)</p>
+                        <p class="desc">This is your go-to, fully customized facial designed to deeply cleanse, exfoliate, and nourish the skin. Includes cleansing, exfoliation, extractions (if needed), mask, facial massage, and targeted serums and moisturizers tailored to your skin type. Leaves the skin balanced, radiant, and refreshed.</p>
+                    </div>
+                    <button class="btn-book-now" onclick="toggleCalendar(this)">Book Now</button>
+                </div>
+                <div class="calendar-reveal">
+                    <iframe src="https://zcal.co/hagiaesthetics/60min?embed=1" class="zcal-frame" loading="lazy"></iframe>
                 </div>
             </div>
-        </div>
 
-        <span class="section-label">Service Menu</span>
-        
-        <div class="card">
-            <h2>Express Facial</h2>
-            <span class="price">$15 • 25 Mins</span>
-            <p class="desc">A rapid treatment for a quick glow. Includes deep cleanse, gentle exfoliation, and hydration.</p>
-            <a href="https://zcal.co/hagiaesthetics" target="_blank" class="btn-booking">Book Appointment</a>
-        </div>
+            <div class="service-row">
+                <div class="service-top">
+                    <div class="service-info">
+                        <h3>Corrective Facial</h3>
+                        <p class="time-price">Time: 60 minutes ($45)</p>
+                        <p class="desc">A results-driven facial focused on correcting specific skin concerns such as acne, hyperpigmentation, uneven texture, congestion, or dullness. This advanced treatment may include deeper exfoliation, extended extractions, targeted treatments, masks, and corrective serums to improve overall skin health and clarity.</p>
+                    </div>
+                    <button class="btn-book-now" onclick="toggleCalendar(this)">Book Now</button>
+                </div>
+                <div class="calendar-reveal">
+                    <iframe src="https://zcal.co/hagiaesthetics/60min?embed=1" class="zcal-frame" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
 
-        <div class="card">
-            <h2>Signature Facial</h2>
-            <span class="price">$30 • 60 Mins</span>
-            <p class="desc">Fully customized to deeply cleanse, exfoliate, and nourish. Includes extractions and facial massage.</p>
-            <a href="https://zcal.co/hagiaesthetics" target="_blank" class="btn-booking">Book Appointment</a>
-        </div>
-
-        <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
-        </div>
-
-        <div class="policy-section">
-            <span class="policy-bold">Deposit Policy</span>
-            <p>
-                All appointments require a $20 deposit to secure your booking.<br>
-                Deposits are non-refundable under any circumstances.<br>
-                Please confirm your availability before booking.
-            </p>
-        </div>
+        <footer style="text-align:center; padding:40px; font-size:0.75rem; color:var(--steel); letter-spacing: 2px;">© 2026 STUDIO HAGI</footer>
     </div>
 
+    <script>
+        function togglePolicyContent(btn) {
+            const content = document.getElementById('policyContent');
+            btn.classList.toggle('active');
+            content.classList.toggle('open');
+        }
+        function togglePolicy(el, title, points) {
+            const v = document.getElementById('pView');
+            const list = document.getElementById('pB');
+            const pT = document.getElementById('pT');
+            if (el.classList.contains('active')) {
+                el.classList.remove('active');
+                v.classList.remove('active');
+                return;
+            }
+            document.querySelectorAll('.policy-item').forEach(i => i.classList.remove('active'));
+            el.classList.add('active');
+            pT.innerText = title;
+            list.innerHTML = points.map(item => `<li>${item}</li>`).join('');
+            v.classList.add('active');
+        }
+        function toggleCalendar(btn) {
+            const row = btn.closest('.service-row');
+            const isActive = row.classList.contains('active');
+            document.querySelectorAll('.service-row').forEach(r => r.classList.remove('active'));
+            if (!isActive) row.classList.add('active');
+        }
+    </script>
 </body>
 </html>
