@@ -29,7 +29,7 @@
         .dash-card label { position: absolute; top: -10px; left: 12px; background: #fff; padding: 0 8px; font-size: 0.6rem; font-weight: 900; text-transform: uppercase; color: var(--button-grey); }
         .dash-line { font-size: 0.75rem; margin-bottom: 4px; font-weight: 600; line-height: 1.4; }
 
-        .policy-section, .services-area { padding: 20px 25px; box-sizing: border-box; }
+        .policy-section, .services-area, .membership-area { padding: 20px 25px; box-sizing: border-box; }
         
         .curved-headline { 
             width: auto; 
@@ -44,57 +44,58 @@
             justify-content: center; 
             gap: 10px; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
         .curved-headline h2 { font-size: 0.75rem; margin: 0; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; color: var(--steel-dark); }
         
-        .policy-toggle-btn { cursor: pointer; }
         .policy-toggle-btn.active i { transform: rotate(180deg); }
-
         .policy-content-wrapper { max-height: 0; overflow: hidden; transition: 0.5s ease; }
         .policy-content-wrapper.open { max-height: 1500px; padding-top: 10px; }
+
+        /* Membership Styles */
+        .member-card { border: 1px solid #cbd5e1; border-radius: 15px; margin-bottom: 15px; background: #fff; overflow: hidden; transition: 0.3s; }
+        .member-header { padding: 18px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #fff; }
+        .member-title h3 { margin: 0; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+        .member-title span { display: block; font-size: 0.65rem; font-weight: 400; color: #64748b; text-transform: none; margin-top: 2px; }
+        .member-price { font-weight: 800; font-size: 0.9rem; color: var(--steel-dark); }
+        
+        .member-details { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; background: #f8fafc; }
+        .member-card.active .member-details { max-height: 800px; border-top: 1px solid #e2e8f0; }
+        .member-card.active { border-color: var(--button-grey); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+        .detail-body { padding: 20px; }
+        .no-deposit-badge { background: #334155; color: #fff; font-size: 0.6rem; font-weight: 800; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+        .member-list { list-style: none; padding: 0; margin: 0; }
+        .member-list li { font-size: 0.75rem; margin-bottom: 8px; display: flex; gap: 10px; line-height: 1.4; color: #475569; }
+        .member-list li i { color: #94a3b8; font-size: 0.8rem; margin-top: 2px; }
+        .member-vibe { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #cbd5e1; font-style: italic; font-size: 0.75rem; color: #64748b; }
+
+        /* Icons & Grid */
         .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center; }
         .icon-circle { width: 44px; height: 44px; border: 1px solid #cbd5e1; border-radius: 50%; margin: 0 auto 5px; display: flex; align-items: center; justify-content: center; background: #fff; font-size: 1rem; }
         .policy-item.active .icon-circle { background: var(--button-grey); color: #fff; }
         .policy-item span { font-size: 0.5rem; font-weight: 800; text-transform: uppercase; display: block; color: var(--steel-dark); }
-
         .policy-reveal { background: #f1f5f9; color: var(--steel-dark); border: 1px solid #cbd5e1; border-radius: 12px; max-height: 0; overflow: hidden; transition: 0.4s ease; }
         .policy-reveal.active { max-height: 600px; padding: 20px; margin: 15px 0; }
         .policy-reveal ul { margin: 0; padding-left: 20px; font-size: 0.85rem; line-height: 1.6; }
 
+        /* Services */
         .service-row { border-top: 1px solid #cbd5e1; padding: 25px 0; }
         .service-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; }
         .service-info { flex: 1; }
         .service-info h3 { margin: 0; font-size: 1rem; font-weight: 800; text-transform: uppercase; color: #334155; }
         .service-info .time-price { font-weight: 800; font-size: 0.75rem; margin: 6px 0; color: var(--button-grey); }
         .service-info .desc { margin: 8px 0 0; font-size: 0.8rem; color: #64748b; line-height: 1.5; }
-        
         .btn-book-now { background: var(--button-grey); color: #fff; border: 1px solid #475569; padding: 10px 18px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; border-radius: 6px; cursor: pointer; flex-shrink: 0; transition: 0.3s; }
         .btn-book-now:hover { background: #475569; }
-
         .calendar-reveal { max-height: 0; overflow: hidden; transition: 0.6s ease; background: #fff; border-radius: 12px; }
         .service-row.active .calendar-reveal { max-height: 600px; padding: 15px; margin-top: 20px; border: 1px solid #cbd5e1; }
-        
         .zcal-frame { width: 100%; height: 500px; border: none; border-radius: 8px; background: #fff; }
 
+        /* Payment */
         .payment-container { padding: 10px 25px 40px; text-align: center; }
-        .btn-deposit { 
-            display: inline-block; 
-            width: auto; 
-            min-width: 180px; 
-            background: var(--stripe-grey); 
-            color: #fff; 
-            text-decoration: none; 
-            padding: 14px 30px; 
-            border-radius: 50px; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            font-size: 0.75rem; 
-            letter-spacing: 1.5px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            transition: 0.3s; 
-        }
+        .btn-deposit { display: inline-block; width: auto; min-width: 180px; background: var(--stripe-grey); color: #fff; text-decoration: none; padding: 14px 30px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1.5px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s; }
         .btn-deposit:hover { background: #000; transform: translateY(-2px); }
-        
         footer { text-align: center; padding: 20px 50px 50px; font-size: 0.7rem; color: var(--button-grey); letter-spacing: 3px; font-weight: 800; text-transform: uppercase; }
     </style>
 </head>
@@ -148,7 +149,7 @@
                     <div class="service-info">
                         <h3>Express Facial</h3>
                         <p class="time-price">Time: 25 minutes ($15)</p>
-                        <p class="desc">Perfect for clients who want glowing skin. This quick treatment includes a deep cleanse, gentle exfoliation, and customized finishing products to instantly refresh and hydrate the skin. Ideal for maintenance in between full facials or before an event.</p>
+                        <p class="desc">Perfect for clients who want glowing skin. This quick treatment includes a deep cleanse, gentle exfoliation, and customized finishing products to instantly refresh and hydrate the skin.</p>
                     </div>
                     <button class="btn-book-now" onclick="toggleCalendar(this)">Book Now</button>
                 </div>
@@ -162,7 +163,7 @@
                     <div class="service-info">
                         <h3>Signature / Basic Facial</h3>
                         <p class="time-price">Time: 60 minutes ($30)</p>
-                        <p class="desc">This is your go-to, fully customized facial designed to deeply cleanse, exfoliate, and nourish the skin. Includes cleansing, exfoliation, extractions (if needed), mask, facial massage, and targeted serums and moisturizers tailored to your skin type. Leaves the skin balanced, radiant, and refreshed.</p>
+                        <p class="desc">Fully customized facial designed to deeply cleanse, exfoliate, and nourish the skin. Includes extractions (if needed), mask, facial massage, and targeted serums.</p>
                     </div>
                     <button class="btn-book-now" onclick="toggleCalendar(this)">Book Now</button>
                 </div>
@@ -170,18 +171,70 @@
                     <iframe src="https://zcal.co/i/RtNVupVe?embed=1" class="zcal-frame" loading="lazy"></iframe>
                 </div>
             </div>
+        </section>
 
-            <div class="service-row">
-                <div class="service-top">
-                    <div class="service-info">
-                        <h3>Corrective Facial</h3>
-                        <p class="time-price">Time: 60 minutes ($45)</p>
-                        <p class="desc">A results-driven facial focused on correcting specific skin concerns such as acne, hyperpigmentation, uneven texture, congestion, or dullness. This advanced treatment may include deeper exfoliation, extended extractions, targeted treatments, masks, and corrective serums to improve overall skin health and clarity.</p>
+        <section class="membership-area">
+            <div class="curved-headline"><h2>Membership Plans</h2></div>
+
+            <div class="member-card" onclick="toggleMembership(this)">
+                <div class="member-header">
+                    <div class="member-title">
+                        <h3><i class="fas fa-seedling"></i> Hagi Starter Pack <span>Entry Membership</span></h3>
                     </div>
-                    <button class="btn-book-now" onclick="toggleCalendar(this)">Book Now</button>
+                    <div class="member-price">$79/mo</div>
                 </div>
-                <div class="calendar-reveal">
-                    <iframe src="https://zcal.co/i/RtNVupVe?embed=1" class="zcal-frame" loading="lazy"></iframe>
+                <div class="member-details">
+                    <div class="detail-body">
+                        <ul class="member-list">
+                            <li><i class="fas fa-check"></i> 1 Express Facial (30 min)</li>
+                            <li><i class="fas fa-check"></i> Monthly skin check + routine update</li>
+                            <li><i class="fas fa-check"></i> Priority booking access</li>
+                        </ul>
+                        <div class="member-vibe">Member vibe: "I don't chase glow, I maintain it."</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member-card" onclick="toggleMembership(this)">
+                <div class="member-header">
+                    <div class="member-title">
+                        <h3><i class="fas fa-star"></i> Hagi Priority Pass <span>Most Popular</span></h3>
+                    </div>
+                    <div class="member-price">$115/mo</div>
+                </div>
+                <div class="member-details">
+                    <div class="detail-body">
+                        <ul class="member-list">
+                            <li><i class="fas fa-check"></i> 1 Signature Facial per month (60 min)</li>
+                            <li><i class="fas fa-check"></i> 1 FREE add-on per month (Extractions, Hydrojelly, LED, or High Frequency)</li>
+                            <li><i class="fas fa-check"></i> Priority booking access (first choice)</li>
+                            <li><i class="fas fa-check"></i> Free skin plan + progress tracking</li>
+                            <li><i class="fas fa-check"></i> Free monthly skin check-in</li>
+                        </ul>
+                        <div class="member-vibe">Member vibe: "Studio Hagi is my skincare routine."</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member-card" onclick="toggleMembership(this)">
+                <div class="member-header">
+                    <div class="member-title">
+                        <h3><i class="fas fa-crown"></i> "Front of The Line" <span>Luxury Membership</span></h3>
+                    </div>
+                    <div class="member-price">$135/mo</div>
+                </div>
+                <div class="member-details">
+                    <div class="detail-body">
+                        <div class="no-deposit-badge"><i class="fas fa-shield-check"></i> NO DEPOSIT REQUIRED</div>
+                        <ul class="member-list">
+                            <li><i class="fas fa-check"></i> 2 services per month (1 Signature + 1 Express)</li>
+                            <li><i class="fas fa-check"></i> 1 premium add-on EVERY visit</li>
+                            <li><i class="fas fa-check"></i> Front-of-the-line booking (priority scheduling)</li>
+                            <li><i class="fas fa-check"></i> Monthly skin analysis + homecare plan</li>
+                            <li><i class="fas fa-check"></i> Early access to Hagi Aesthetics skincare drops</li>
+                        </ul>
+                        <div class="member-vibe">Member vibe: "If it's booked... I'm still getting in."</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -219,6 +272,11 @@
             const isActive = row.classList.contains('active');
             document.querySelectorAll('.service-row').forEach(r => r.classList.remove('active'));
             if (!isActive) row.classList.add('active');
+        }
+        function toggleMembership(card) {
+            const isActive = card.classList.contains('active');
+            document.querySelectorAll('.member-card').forEach(c => c.classList.remove('active'));
+            if (!isActive) card.classList.add('active');
         }
     </script>
 </body>
